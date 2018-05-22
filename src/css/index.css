@@ -1,0 +1,183 @@
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Lilita+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+
+*{
+    box-sizing: border-box;
+}
+
+body , html{
+    margin:0;
+    padding:0;
+    font-family: "source sans pro",sans-serif;
+}
+
+.container{
+    position: relative;
+    border:1px solid blue;
+    padding:2em;
+    width:70%;
+    left:50%;
+    transform:translateX(-50%);
+    margin-top:3em;
+}
+
+.container h1{
+    text-align: center;
+    font-family:"Lilita one",sans-serif;
+    font-size:3em;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+.container form{
+    position: relative;
+    width:100%;
+    text-align: center;
+}
+
+.container input , .container button{
+    position: relative;
+    padding:0.8em 1em 0.8em 1em;
+    font-family: "roboto",sans-serif;
+    font-size:1.2em;
+    font-weight: 300;
+}
+
+.container input{
+    width:80%;
+}
+
+ul{
+    position: relative;
+    width:100%;
+    padding:1em;
+    margin-top:2em;
+    list-style: none;
+    font-size:1.1em;
+}
+
+.task--li{
+    position: relative;
+    padding:1em 1em 1em 4em;
+    border:1px solid #d6d6d6;
+    border-radius: 10px;
+    margin:0.5em;
+    color:#474b3c;
+}
+
+.task--li span{
+    position: relative;
+    display: inline-block;
+    width:35px;
+    height:35px;
+    border:1px solid #d3d3d3;
+    background:transparent;
+    border-radius: 50%;
+    margin-left:0.5em;
+    margin-right:0.5em;
+    top:-2px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background,border 100ms ease 0s;
+}
+
+.task--li span i{
+    position: absolute;
+    width:auto;
+    height:auto;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:#474b3c;
+    transition:color 100ms ease 0s;
+}
+
+.task--li .complete--span i{
+    color:#32993e;
+}
+
+.task--li .delete--span i{
+    color:#e53020;
+}
+
+.task--li .complete--span:hover{
+    background:#32993e;
+    border-color:transparent;
+}
+
+.task--li .complete--span:hover i , .task--li .delete--span:hover i {
+    color:#fff;
+}
+
+.task--li .delete--span:hover{
+    background:#e53020;
+    border-color:transparent;
+}
+
+.task--li .delete--span , .task--li .complete--span,.task--li .edit--span {
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+/*
+.task--li .delete--span{
+    right:1em;
+}
+
+.task--li .complete--span{
+    left:1em;
+}
+
+.task--li .edit--span{
+    right:0em!important;
+}
+*/
+
+
+.task--li .complete--span{
+    left:1em;
+}
+
+.task--li  .edit--span{
+    right:0;
+}
+
+.task--li .delete--span{
+    right: 2.5em;
+}
+
+.completed{
+    position: absolute;
+    height:2px;
+    background:#32993e;
+    width:0%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%); 
+    animation:taskLineAnimation 300ms ease 0s 1 both;
+    pointer-events: none;
+}
+
+@keyframes taskLineAnimation{
+    from{width:0%}
+    to{width:96%}
+}
+
+
+.task--li input{
+    text-decoration: none;
+    padding:0!important;
+    font-size: unset!important;
+    border:none;
+    outline:none;
+}
+
+@media only screen and (max-width:768px){
+    .container{
+        width:90%;
+        margin-top:1em;
+    }
+}
