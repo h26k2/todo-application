@@ -26,7 +26,7 @@ class TodoApp{
         let p = document.createElement("p");
 
         if(element === "first"){
-            p.innerText = "Task's you've to do..";
+            p.innerText = "Tasks you've to do..";
             ul.setAttribute("class","task--parent--container");
         }
         else if(element === "second"){

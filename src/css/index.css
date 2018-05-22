@@ -1,8 +1,8 @@
 
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700');
-@import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800');
-@import url('https://fonts.googleapis.com/css?family=Lilita+One');
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+@font-face{
+    src:url("../fonts/GoogleSans-Regular.ttf");
+    font-family:"Google Sans";
+}
 
 *{
     box-sizing: border-box;
@@ -11,12 +11,26 @@
 body , html{
     margin:0;
     padding:0;
-    font-family: "source sans pro",sans-serif;
+    font-family: "Google Sans",sans-serif;
+}
+
+input{
+    outline:none;
+    background:#fff;
+    font-family:"Google Sans",sans-serif;
+    color:rgba(0,0,0,0.72);
+}
+
+input::-webkit-input-placeholder{
+    color:rgba(0,0,0,0.72);
+}
+
+button{
+    font-family: "Google sans",sans-serif;    
 }
 
 .container{
     position: relative;
-    border:1px solid blue;
     padding:2em;
     width:70%;
     left:50%;
@@ -26,7 +40,6 @@ body , html{
 
 .container h1{
     text-align: center;
-    font-family:"Lilita one",sans-serif;
     font-size:3em;
     font-weight: 300;
     text-transform: capitalize;
@@ -38,19 +51,42 @@ body , html{
     text-align: center;
 }
 
-.container input , .container button{
+.container form input , .container form button{
     position: relative;
     padding:0.8em 1em 0.8em 1em;
-    font-family: "roboto",sans-serif;
-    font-size:1.2em;
-    font-weight: 300;
+    font-size:1.1em;
+    border-radius: 30px;    
+    border:1px solid #e8eaed;
 }
 
-.container input{
+.container form input{
     width:80%;
+    transition:box-shadow 300ms ease 0s;    
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;    
+}
+
+.container form input:hover {
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.container form button{
+    background:#fff;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    cursor: pointer;
+    padding-left:0.6em;
+    transition:color,background 300ms ease 0s;
+    color:rgba(0,0,0,0.72);
+}
+
+.container form button:hover{
+    background:#e8f0fe;
+    color:#1967d2;
 }
 
 ul{
+    font-family: "Google Sans",sans-serif;
     position: relative;
     width:100%;
     padding:1em;
@@ -62,10 +98,22 @@ ul{
 .task--li{
     position: relative;
     padding:1em 1em 1em 4em;
-    border:1px solid #d6d6d6;
-    border-radius: 10px;
+    border:1px solid #e8eaed;
     margin:0.5em;
-    color:#474b3c;
+    color:rgba(0,0,0,0.72);
+    border-radius: 30px;
+    transition:background 300ms ease 0s;
+}
+
+.task--li:hover{
+    background:#f5f5f5;
+}
+
+.task--li input{
+    width:80%;
+    background:none;
+    pointer-events: none;
+    transition:color 300ms ease 0s;
 }
 
 .task--li span{
@@ -73,15 +121,15 @@ ul{
     display: inline-block;
     width:35px;
     height:35px;
-    border:1px solid #d3d3d3;
-    background:transparent;
+    border:1px solid #e8eaed;
+    background:#fff;
     border-radius: 50%;
     margin-left:0.5em;
     margin-right:0.5em;
     top:-2px;
     vertical-align: middle;
     cursor: pointer;
-    transition: background,border 100ms ease 0s;
+    transition: background 300ms ease 0s , border-color 300ms ease 0s;
 }
 
 .task--li span i{
@@ -91,29 +139,38 @@ ul{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    color:#474b3c;
-    transition:color 100ms ease 0s;
+    color:rgba(0,0,0,0.54);
+    transition:color 300ms ease 0s;
 }
 
 .task--li .complete--span i{
-    color:#32993e;
+    color:#00bfa5;
 }
 
 .task--li .delete--span i{
-    color:#e53020;
+    color:#e53935  ;
 }
 
 .task--li .complete--span:hover{
-    background:#32993e;
+    background:#00bfa5;
     border-color:transparent;
 }
 
-.task--li .complete--span:hover i , .task--li .delete--span:hover i {
+.task--li .edit--span i {
+    color:#0288d1 ;
+}
+
+.task--li .edit--span:hover{
+    background:#0288d1 ;
+    border-color:transparent;
+}
+
+.task--li .complete--span:hover i , .task--li .delete--span:hover i,.task--li .edit--span:hover i {
     color:#fff;
 }
 
 .task--li .delete--span:hover{
-    background:#e53020;
+    background:#e53935;
     border-color:transparent;
 }
 
@@ -122,20 +179,6 @@ ul{
     top:50%;
     transform:translateY(-50%);
 }
-/*
-.task--li .delete--span{
-    right:1em;
-}
-
-.task--li .complete--span{
-    left:1em;
-}
-
-.task--li .edit--span{
-    right:0em!important;
-}
-*/
-
 
 .task--li .complete--span{
     left:1em;
@@ -149,10 +192,17 @@ ul{
     right: 2.5em;
 }
 
+/*completed stuff*/
+
+.task--completed--container .task--li{
+    background:#e8f0fe;
+}
+
+
 .completed{
     position: absolute;
     height:2px;
-    background:#32993e;
+    background:#00bfa5;
     width:0%;
     top:50%;
     left:50%;
@@ -160,6 +210,7 @@ ul{
     animation:taskLineAnimation 300ms ease 0s 1 both;
     pointer-events: none;
 }
+
 
 @keyframes taskLineAnimation{
     from{width:0%}
@@ -181,3 +232,29 @@ ul{
         margin-top:1em;
     }
 }
+
+.task--parent--container p , 
+.task--completed--container p {
+    font-size: 1.4em;
+    position: relative;
+}
+
+.task--parent--container p::after , 
+.task--completed--container p::after{
+    content:"";
+    position: absolute;
+    width:100%;
+    left:-2%;
+    height:2px;
+    background:#e8eaed;
+    bottom:-0.3em;
+}
+
+.task--parent--container li:not(.task--li):nth-child(2) , 
+.task--completed--container li:not(.task--li):nth-child(2){
+    text-align: center;
+    color:rgba(0,0,0,0.54)
+}
+
+
+
